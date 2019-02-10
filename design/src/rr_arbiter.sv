@@ -1,13 +1,12 @@
 /*
 
+/*s_md
 # Summary
 This module is a parameterized round robin arbiter.
-
 ## Specifications
 This module arbiterates among requenstors and returns grants
 to the active requests in round robin order. Out of reset,
 client 0 has the highest priority.
-
 ## IO specifications:
 request: This bus has a bit for each client. The bit is an active high
          signal. Once asserted for a client, the request must be held high
@@ -17,9 +16,10 @@ stall: This signal stalls the arbitration. No grants are issues
 grant: This bus has a bit for each client. The bit indicates a grant
        for the corresponding client. A grant can come the same cycle
        as the request is presented.
+       
+e_md*/
 
-*/
-
+//s_sv
 module rr_arbiter #(
   parameter CLIENTS = 8
   )
@@ -68,3 +68,4 @@ parameter CLIENTS_W = $bits(CLIENTS);
   end
 
 endmodule
+//e_sv
