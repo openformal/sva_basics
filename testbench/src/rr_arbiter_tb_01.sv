@@ -109,18 +109,18 @@ e_md*/
 
   gnt5_received_in_31_cycles_C: cover property (gnt5_received_in_31_cycles_S);
 
-  /*s_md
-  The following cover property is not possible and will fail.
-  A failure of a cover property indicates that there is no
-  trace that satisfies the sequence this property is trying to
-  cover.
-  Also note that this is closely related to the assertion we coded.
-  If assert(prop) holds true, then cover(not prop) will hold false.
-  In this case, since we have proven an aseertion stating a grant
-  comes in 0 to 31 cycle, a cover of grant coming in 32 cycles will
-  will be false.
-  e_md*/
-  
+/*s_md
+The following cover property is not possible and will fail.
+A failure of a cover property indicates that there is no
+trace that satisfies the sequence this property is trying to
+cover.
+Also note that this is closely related to the assertion we coded.
+If assert(prop) holds true, then cover(not prop) will hold false.
+In this case, since we have proven an aseertion stating a grant
+comes in 0 to 31 cycle, a cover of grant coming in 32 cycles will
+will be false.
+e_md*/
+
   sequence gnt5_received_in_32_cycles_Fail_S;
     @(posedge clock) !request[5] ##1 request[5] ##0 (!grant[5])[*32] ##1 grant[5];
   endsequence;
