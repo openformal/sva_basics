@@ -4,7 +4,7 @@ This testbench introduces sequences, porperties, assertions, and assumptions.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
-concepts. The dut design file is sva_basics/design/src/rr_arbiter.sv.
+concepts. The dut design file is -
 [sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
 
 e_md*/
