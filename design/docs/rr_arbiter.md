@@ -24,25 +24,24 @@ module rr_arbiter #(
   parameter CLIENTS = 8
   )
   (
-  input      [CLIENTS-1:0] request;
-  input                    stall;
-  output reg [CLIENTS-1:0] grant;
-  input                    clock;
-  input                    reset;
-  );
+  input      [CLIENTS-1:0] request,
+  input                    stall,
+  output reg [CLIENTS-1:0] grant,
+  input                    clock,
+  input                    reset);
 
-  parameter CLIENTS_W = $bits(CLIENTS);
+  parameter CLIENTS_W = $clog2(CLIENTS);
 
   logic [CLIENTS_W-1:0] last_selected;
   logic [CLIENTS_W-1:0] next_selected;
 
-  wire [CLIENTS_W-1:0] rotated_request = (request >> last_selected) |
-                                         (request << (CLIENTS - last_selected));
+  wire [CLIENTS-1:0] rotated_request = (request >> last_selected) |
+                                       (request << (CLIENTS - last_selected));
 
   always_comb begin
-    next_selected = `0;
-    for (int i=CLIENTS-1; i>0; i++) begin
-      if (requested[i]) begin
+    next_selected = '0;
+    for (int i=CLIENTS-1; i>0; i--) begin
+      if (rotated_request[i]) begin
         next_selected = i;
       end
     end
@@ -51,7 +50,7 @@ module rr_arbiter #(
 
   always @(posedge clock) begin
     if (reset) begin
-      last_selected <= `0;
+      last_selected <= '0;
     end
     else begin
       if (!stall) begin
@@ -61,7 +60,7 @@ module rr_arbiter #(
   end
 
   always_comb begin
-    grant = `0;
+    grant = '0;
     if (!stall) begin
       grant[next_selected] = 1'b1;
     end

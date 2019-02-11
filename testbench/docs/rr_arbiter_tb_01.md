@@ -8,24 +8,25 @@ concepts. The dessign file is sva_basics/design/src/rr_arbiter.sv.
 ```sv
 module rr_arbiter_tb_01();
 
-  logic clk;
+  logic clock;
   logic reset;
 
   parameter CLIENTS = 32;
 
   logic [CLIENTS-1:0] request;
-  logic [CLIENTS=1:0] grant;
+  logic [CLIENTS-1:0] grant;
 
 ```
 In this testbench we will tie off stall signal to 1'b0
 ```sv
-  wire stall = 0;
+  wire stall = 1'b0;
 
-  rr_arbiter dut(.request (request),
-                 .grant   (grant),
-                 .stall   (stall),
-                 .clock   (clock),
-                 .reset   (reset));
+  rr_arbiter #(.CLIENTS(32)) dut (
+                  .request (request),
+                  .grant   (grant),
+                  .stall   (stall),
+                  .clock   (clock),
+                  .reset   (reset));
 
 ```
 # Rule (gnt_in_31_cycles)
@@ -41,7 +42,7 @@ This sequence describes an grant[4] being set in 0 to 31 clocks.
 ```sv
 
  sequence gnt4_in_31_cycles_S;
-   #[0:31] grant[4]
+   ##[0:31] grant[4];
  endsequence;
 
 ```
@@ -51,16 +52,16 @@ Properties can use implication operators (|->, |=>).
 antecedant(precondition) |-> consequent
 ```sv
   property gnt4_in_31_cycles_P0;
-    req |-> gnt4_in_31_cycles_S;
-  endproperty
+    request[4] |-> gnt4_in_31_cycles_S;
+  endproperty;
 
 ```
 An equivalent way of writing this would begin
 ```sv
 
   property gnt4_in_31_cycles_P1;
-    req |-> #[0:31] grant[4]
-  endproperty
+    request[4] |-> ##[0:31] grant[4];
+  endproperty;
 
 ```
 ## Assertion
@@ -68,9 +69,9 @@ Assertion is a check. The form below is concurrent assertion which
 is checked to be always true.
 Assertions can have expressions, sequences and properties.
 ```sv
-gnt4_in_31_cycles_AT0: assert property (
-  @(posedge clock) (gnt4_in_31_cycles_P0)
-)
+  gnt4_in_31_cycles_AT0: assert property (
+    @(posedge clock) (gnt4_in_31_cycles_P0)
+  );
 
 ```
 ## Assumption
@@ -84,7 +85,7 @@ Since there are multiple requestors we will use a generate
 to make properties.
 ```sv
   generate
-    for (genevar i=0; i<CLIENTS; i++) begin
+    for (genvar i=0; i<CLIENTS; i++) begin
       hold_request_till_grant: assume property (
         @(posedge clock) (
           request[i] && !grant[i] |-> ##1 request[i]
@@ -95,19 +96,37 @@ to make properties.
 
 ```
 ## Cover
-Cover is a set of temporal condition for which formal
-verification tool shows one possible trace.
+Cover is a instruction to the tool to create a scenario
+where the property is true.
 
 The cover below defines a condition where a response
 for a request is received after 31 clock cycles.
 
 The sequence below shows clocking within the sequence.
 ```sv
-  sequence gnt5_received_in_31_cycles_S:
-    @(posedge clk) req[5] [*31] !gnt[5] ##1 gnt[5]
-  endsequence
+  sequence gnt5_received_in_31_cycles_S;
+    @(posedge clock) !request[5] ##1 request[5] ##0 (!grant[5])[*31] ##1 grant[5];
+  endsequence;
 
-  gnt5_received_in_31_cycles_C: cover property (gnt5_receivedcles_C);
+  gnt5_received_in_31_cycles_C: cover property (gnt5_received_in_31_cycles_S);
+
+  /*s_md
+  The following cover property is not possible and will fail.
+  A failure of a cover property indicates that there is no
+  trace that satisfies the sequence this property is trying to
+  cover.
+  Also note that this is closely related to the assertion we coded.
+  If assert(prop) holds true, then cover(not prop) will hold false.
+  In this case, since we have proven an aseertion stating a grant
+  comes in 0 to 31 cycle, a cover of grant coming in 32 cycles will
+  will be false.
+  e_md*/
+  
+  sequence gnt5_received_in_32_cycles_Fail_S;
+    @(posedge clock) !request[5] ##1 request[5] ##0 (!grant[5])[*32] ##1 grant[5];
+  endsequence;
+
+  gnt5_received_in_32_cycles_Fail_C: cover property (gnt5_received_in_32_cycles_Fail_S);
 
 endmodule
 ```
