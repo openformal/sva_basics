@@ -41,9 +41,9 @@ can spans one to multiple clocks.
 This sequence describes an grant[4] being set in 0 to 31 clocks.
 e_md*/
 
-sequence gnt4_in_31_cycles_S;
-  #[0:31] grant[4]
-endsequence;
+ sequence gnt4_in_31_cycles_S;
+   #[0:31] grant[4]
+ endsequence;
 
 /*s_md
 ## Property:
@@ -51,15 +51,15 @@ A property can be viewed as a rule. It can have expressions and sequences.
 Properties can use implication operators |->.
 antecedant(precondition) |-> consequent
 e_md*/
-property gnt4_in_31_cycles_P0;
-  req |-> gnt4_in_31_cycles_S;
-endproperty
+  property gnt4_in_31_cycles_P0;
+    req |-> gnt4_in_31_cycles_S;
+  endproperty
 
 //md An equivalent way of writing this would begin
 
-property gnt4_in_31_cycles_P1;
-  req |-> #[0:31] grant[4]
-endproperty
+  property gnt4_in_31_cycles_P1;
+    req |-> #[0:31] grant[4]
+  endproperty
 
 /*s_md
 ## Assertion
@@ -82,15 +82,15 @@ asserted while the grant is not received.
 Since there are multiple requestors we will use a generate
 to make properties.
 e_md*/
-generate
-  for (genevar i=0; i<CLIENTS; i++) begin
-    hold_request_till_grant: assume property (
-      @(posedge clock) (
-        request[i] && !grant[i] |-> ##1 request[i]
-      )
-    );
-  end
-endgenerate
+  generate
+    for (genevar i=0; i<CLIENTS; i++) begin
+      hold_request_till_grant: assume property (
+        @(posedge clock) (
+          request[i] && !grant[i] |-> ##1 request[i]
+        )
+      );
+    end
+  endgenerate
 
 /*s_md
 ## Covers
@@ -100,14 +100,13 @@ verification tool shows one possible trace.
 The cover below defines a condition where a response
 for a request is received after 31 clock cycles.
 
+The sequence below shows clocking within the sequence.
 e_md*/
+  sequence gnt5_received_in_31_cycles_S:
+    @(posedge clk) req[5] [*31] !gnt[5] ##1 gnt[5]
+  endsequence
 
-//md The sequence below shows clocking within the sequence.
-sequence gnt5_received_in_31_cycles_S:
-  @(posedge clk) req[5] [*31] !gnt[5] ##1 gnt[5]
-endsequence
-
-gnt5_received_in_31_cycles_C: cover property (gnt5_receivedcles_C);
+  gnt5_received_in_31_cycles_C: cover property (gnt5_receivedcles_C);
 
 endmodule
 //e_sv
