@@ -5,14 +5,19 @@ This module arbiterates among requenstors and returns grants
 to the active requests in round robin order. Out of reset,
 client 0 has the highest priority.
 ## IO specifications:
-### request: This bus has a bit for each client. The bit is an active high
-             signal. Once asserted for a client, the request must be held high
-             for that client till a grant is received.
-### stall: This signal stalls the arbitration. No grants are issues
-           during the stalled cycle.
-### grant: This bus has a bit for each client. The bit indicates a grant
-           for the corresponding client. A grant can come the same cycle
-           as the request is presented.
+### request:
+This bus has a bit for each client. The bit is an active high
+signal. Once asserted for a client, the request must be held high
+for that client till a grant is received.
+
+### stall:
+This signal stalls the arbitration. No grants are issues during
+the stalled cycle.
+
+### grant:
+This bus has a bit for each client. The bit indicates a grant
+for the corresponding client. A grant can come the same cycle
+as the request is presented.
 
 ```sv
 module rr_arbiter #(
@@ -26,7 +31,7 @@ module rr_arbiter #(
   input                    reset;
   );
 
-parameter CLIENTS_W = $bits(CLIENTS);
+  parameter CLIENTS_W = $bits(CLIENTS);
 
   logic [CLIENTS_W-1:0] last_selected;
   logic [CLIENTS_W-1:0] next_selected;
