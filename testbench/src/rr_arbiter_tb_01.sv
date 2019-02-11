@@ -48,7 +48,7 @@ e_md*/
 /*s_md
 ## Property:
 A property can be viewed as a rule. It can have expressions and sequences.
-Properties can use implication operators |->.
+Properties can use implication operators (|->, |=>).
 antecedant(precondition) |-> consequent
 e_md*/
   property gnt4_in_31_cycles_P0;
@@ -72,7 +72,7 @@ gnt4_in_31_cycles_AT0: assert property (
 )
 
 /*s_md
-## Assumptions
+## Assumption
 Assumption is a constraint on the formal verification tool.
 It defines a rule that the tool must follow while proving
 an assertion or generating a cover property for a cover
@@ -93,8 +93,8 @@ e_md*/
   endgenerate
 
 /*s_md
-## Covers
-Covers is a set of temporal condition for which formal
+## Cover
+Cover is a set of temporal condition for which formal
 verification tool shows one possible trace.
 
 The cover below defines a condition where a response
