@@ -68,7 +68,7 @@ Assertion is a check. The form below is concurrent assertion which
 is checked to be always true.
 Assertions can have expressions, sequences and properties.
 e_md*/
-  gnt4_in_31_cycles_AT0: assert property (
+  gnt4_in_31_cycles_AT: assert property (
     @(posedge clock) (gnt4_in_31_cycles_P0)
   );
 
@@ -112,10 +112,10 @@ e_md*/
 /*s_md
 The following cover property is not possible and will fail.
 A failure of a cover property indicates that there is no
-trace that satisfies the sequence this property is trying to
+trace that satisfies the sequence that property is trying to
 cover.
-Also note that this is closely related to the assertion we coded.
-If assert(prop) holds true, then cover(not prop) will hold false.
+Also note that this is closely related to the assertion (gnt4_in_31_cycles_AT)
+we coded. If assert(prop) holds true, then cover(not prop) will hold false.
 In this case, since we have proven an aseertion stating a grant
 comes in 0 to 31 cycle, a cover of grant coming in 32 cycles will
 will be false.
