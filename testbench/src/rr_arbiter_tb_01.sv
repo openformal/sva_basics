@@ -29,13 +29,13 @@ module rr_arbiter_tb_01();
                  .reset   (reset));
 
 /*s_md
-# Rule: gnt_in_31_cycles
+# Rule (gnt_in_31_cycles)
 If the stall is never asserted, a grant should be asserted for a
 for a request within 31 (=CLIENTS-1) cycles.
 
 Let us concentrate on one requestor for this testbench, requestor 4.
 
-## Sequence: gnt4_in_32_cycles_S
+## Sequence
 A sequence is a series of boolean conditions or sequences. A sequence
 can spans one to multiple clocks.
 This sequence describes an grant[4] being set in 0 to 31 clocks.
@@ -46,7 +46,7 @@ e_md*/
  endsequence;
 
 /*s_md
-## Property:
+## Property
 A property can be viewed as a rule. It can have expressions and sequences.
 Properties can use implication operators (|->, |=>).
 antecedant(precondition) |-> consequent
