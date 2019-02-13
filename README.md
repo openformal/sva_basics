@@ -1,5 +1,5 @@
-This repository contains examples to illustrate the basics of *System Verilog Assertions (SVAs)* 
-from the perspective of *Formal Verification (FV)*. These examples go over sequences, properties,
+This repository contains examples to illustrate the basics of _*System Verilog Assertions (SVAs)*_ 
+from the perspective of _*Formal Verification (FV)*_. These examples go over sequences, properties,
 assertions, assumptions and covers.
 
 The examples are in src directory and the associated documentation is in docs directory. The
