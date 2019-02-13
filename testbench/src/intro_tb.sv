@@ -10,7 +10,7 @@ concepts. The dut design file is -
 e_md*/
 
 //s_sv
-module rr_arbiter_tb_01();
+module intro_tb();
 
   logic clock;
   logic reset;
