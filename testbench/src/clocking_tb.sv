@@ -105,7 +105,7 @@ e_md*/
   default clocking
     @(posedge clock);
   endclocking
-  
+
   sequence gnt4_in_31_cycles_S5;
     ##[0:31] grant[4];
   endsequence;
@@ -118,3 +118,13 @@ e_md*/
 
 endmodule
 //e_sv
+
+/*s_md
+## Events
+Events may not be fully supported in all Formal Verification tools.
+
+# Recommendation
+Clocking methodology depends on the use case and flow of the organization.
+In general, explicit clocking in the property (or assertions/assumptions/
+covers where property is not present) is a good for reuse and debug.
+e_md*/
