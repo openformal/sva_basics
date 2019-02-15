@@ -125,6 +125,6 @@ Events may not be fully supported in all Formal Verification tools.
 
 # Recommendation
 Clocking methodology depends on the use case and ASIC flow.
-In general, explicit clocking in the property (or assertions/assumptions/
+In general, explicit clocking in properties (or assertions/assumptions/
 covers where property is not present) is a good for reuse and debug.
 e_md*/
