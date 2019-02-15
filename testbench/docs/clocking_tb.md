@@ -90,6 +90,7 @@ to be reusable;
   clocking pe_clock
     @(posedge clock);
   endclocking
+
   sequence gnt4_in_31_cycles_S4;
     ##[0:31] grant[4];
   endsequence;
@@ -107,6 +108,7 @@ to be reusable;
   default clocking
     @(posedge clock);
   endclocking
+  
   sequence gnt4_in_31_cycles_S5;
     ##[0:31] grant[4];
   endsequence;
