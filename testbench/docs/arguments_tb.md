@@ -59,12 +59,10 @@ These arguments may or may not have type defined.
     @(posedge clock) (gnt4_in_31_cycles_P2(request[4], grant[4]))
   );
 
-```
+/*
 ## Sequence with arguments
-```sv
-```
 The example below shows explicit connection
-```sv
+*/
 
   sequence toggle(in0);
     @(posedge clock) ##1 in0 ##1 !in0 ##1 in0;

@@ -58,8 +58,10 @@ e_md*/
     @(posedge clock) (gnt4_in_31_cycles_P2(request[4], grant[4]))
   );
 
-//md ## Sequence with arguments
-//md The example below shows explicit connection
+/*
+## Sequence with arguments
+The example below shows explicit connection
+*/
 
   sequence toggle(in0);
     @(posedge clock) ##1 in0 ##1 !in0 ##1 in0;
