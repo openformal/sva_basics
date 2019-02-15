@@ -18,7 +18,7 @@ module intro_tb();
   logic [CLIENTS-1:0] grant;
 
 ```
-In this testbench we will tie off stall signal to 1'b0
+In this testbench stall is disabled
 ```sv
   wire stall = 1'b0;
 

@@ -20,7 +20,7 @@ module intro_tb();
   logic [CLIENTS-1:0] request;
   logic [CLIENTS-1:0] grant;
 
-//md In this testbench we will tie off stall signal to 1'b0
+//md In this testbench stall is disabled
   wire stall = 1'b0;
 
   rr_arbiter #(.CLIENTS(32)) dut (

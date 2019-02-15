@@ -21,7 +21,7 @@ module clocking_tb();
   logic [CLIENTS-1:0] request;
   logic [CLIENTS-1:0] grant;
 
-//md In this testbench we will tie off stall signal to 1'b0
+//md In this testbench stall is disabled
   wire stall = 1'b0;
 
   rr_arbiter #(.CLIENTS(32)) dut (
@@ -37,11 +37,10 @@ module clocking_tb();
 
 /*s_md
 # Overview
-Concurrent SVAs need to have a clock. We will cover the single clock scenario
-in this testbech.The clock can be specified in the assertion, property or
-sequence.
+Concurrent SVAs need to have a clock. This testbench covers the single clock
+scenario. The clock can be specified in the assertion, property or sequence.
 
-## Clock in assertion
+## Clocking in assertion
 e_md*/
   sequence gnt_in_31_cycles_S1;
     ##[0:31] grant[4];
@@ -85,7 +84,7 @@ e_md*/
 
 /*s_md
 ## Clocking blocks
-### Name clocking block
+### Named clocking block
 e_md*/
   clocking pe_clock
     @(posedge clock);
@@ -101,7 +100,7 @@ e_md*/
   gnt4_in_31_cycles_AT4: assert property (
     @(pe_clock) (gnt4_in_31_cycles_P4)
   );
-//md ### Default clocking
+//md ### Default clocking block
   default clocking
     @(posedge clock);
   endclocking
