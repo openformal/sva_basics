@@ -58,5 +58,14 @@ e_md*/
     @(posedge clock) (gnt4_in_31_cycles_P2(request[4], grant[4]))
   );
 
+  //md # Sequence can also have arguments
+  //md The example below shows explicit connection
+
+  sequence toggle(in0);
+    @(posedge clock) ##1 in0 ##1 !in0 ##1 in0;
+  endsequence
+
+  cover_gnt1_toggles: cover property (toggle(in0.(grant[1])));
+
 endmodule
 //e_sv
