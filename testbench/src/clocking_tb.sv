@@ -1,4 +1,4 @@
-/*s_md
+/*md
 # Description
 This testbench introduces clocking of sequences, porperties, assertions,
 and assumptions.
@@ -8,7 +8,7 @@ This testbench uses a round robin arbiter as a context for introducing the
 concepts. The dut design file is -
 [sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
 
-e_md*/
+*/
 
 //s_sv
 module clocking_tb();
@@ -35,13 +35,13 @@ module clocking_tb();
     @(posedge clock) request[4] && !grant[4] |-> ##1 request[4]
   );
 
-/*s_md
+/*md
 # Overview
 Concurrent SVAs need to have a clock. This testbench covers the single clock
 scenario. The clock can be specified in the assertion, property or sequence.
 
 ## Clocking in assertion
-e_md*/
+*/
   sequence gnt_in_31_cycles_S1;
     ##[0:31] grant[4];
   endsequence;
@@ -54,11 +54,11 @@ e_md*/
     @(posedge clock) (gnt4_in_31_cycles_P1)
   );
 
-/*s_md
+/*md
 ## Clocking in property
 This method is commonly recommended. It allows the sequences
 to be reusable;
-e_md*/
+*/
 
   sequence gnt4_in_31_cycles_S2;
     ##[0:31] grant[4];
@@ -82,10 +82,10 @@ e_md*/
   gnt4_in_31_cycles_AT3: assert property (gnt4_in_31_cycles_P3);
 
 
-/*s_md
+/*md
 ## Clocking blocks
 ### Named clocking block
-e_md*/
+*/
   clocking pe_clock
     @(posedge clock);
   endclocking
@@ -117,9 +117,9 @@ e_md*/
   gnt4_in_31_cycles_AT5: assert property (gnt4_in_31_cycles_P5);
 
 endmodule
-//e_sv
+//sv-
 
-/*s_md
+/*md
 ## Events
 Events may not be fully supported in all Formal Verification tools.
 
@@ -127,4 +127,4 @@ Events may not be fully supported in all Formal Verification tools.
 Clocking methodology depends on the use case and ASIC flow.
 In general, explicit clocking in properties (or assertions/assumptions/
 covers where property is not present) is good for reuse and debug.
-e_md*/
+*/

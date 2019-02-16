@@ -1,4 +1,4 @@
-/*s_md
+/*md
 # Description
 This testbench shows how to add arguments to properties to make them
 reusable.
@@ -8,9 +8,9 @@ This testbench uses a round robin arbiter as a context for introducing the
 concepts. The dut design file is -
 [sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
 
-e_md*/
+*/
 
-//s_sv
+//sv+
 module arguments_tb();
 
   logic clock;
@@ -35,12 +35,12 @@ module arguments_tb();
     @(posedge clock) request[4] && !grant[4] |-> ##1 request[4]
   );
 
-/*s_md
+/*md
 # Overview
 Adding arguments to properties makes them reusable.
 These arguments may or may not have type defined.
 ## Property with formal arguments without type
-e_md*/
+*/
   property gnt4_in_31_cycles_P1(req, gnt);
     req |-> ##[0:31] gnt;
   endproperty;
@@ -58,10 +58,10 @@ e_md*/
     @(posedge clock) (gnt4_in_31_cycles_P2(request[4], grant[4]))
   );
 
-/*s_md
+/*md
 ## Sequence with arguments
 The example below shows explicit connection
-e_md*/
+*/
 
   sequence toggle(in0);
     @(posedge clock) ##1 in0 ##1 !in0 ##1 in0;
@@ -70,4 +70,4 @@ e_md*/
   cover_gnt1_toggles: cover property (toggle(in0.(grant[1])));
 
 endmodule
-//e_sv
+//sv-
