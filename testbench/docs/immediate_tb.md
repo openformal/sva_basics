@@ -48,6 +48,9 @@ formal verification immediate assertions can be used as well.
             state <= WAIT_S;
         end
         default: begin
+          //-------------------------
+          //  Immediate assumption
+          //-------------------------
           assume property (request[4])
           if (grant[4])
             state <= IDLE_S;
