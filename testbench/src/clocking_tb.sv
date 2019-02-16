@@ -10,7 +10,7 @@ concepts. The dut design file is -
 
 */
 
-//s_sv
+//sv+
 module clocking_tb();
 
   logic clock;
