@@ -74,13 +74,13 @@ quite useful. Having said that, one of the reasons of binding a module often
 quoted is that this allows the verification engineers to independently add
 assertions in the design files.
 
-It can be argued that behaviour that can be obsersed from outside of the
-module can be placed in the interface or a bind module that is instantiated
-along with the design through module bindings. This way the binding module
-is at the same level of hierarchy as the module being checked.
+It can be argued that properties for the behaviour that can be obsersed from
+outside of a module can be placed in the interface or a bind module that is
+instantiated along with the design through module bindings. This way the binding
+module is at the same level of hierarchy as the module being checked.
 
 For properties that are specific to the intenal workings of a design
-the design is the best person to write the properties so these should
+the designer is the best person to write these properties so they should
 remain inside the design. That preserves the context of the signals too.
 In the example above, last_selected signal looks out of context.
 
