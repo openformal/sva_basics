@@ -1,6 +1,6 @@
 /*md
 # Description
-This testbench introduces sequences, porperties, assertions, and assumptions.
+This testbench introduces sequences, properties, assertions, and assumptions.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the

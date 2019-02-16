@@ -1,3 +1,12 @@
+# Description
+This testbench shows how to add arguments to properties to make them
+reusable.
+
+# DUT
+This testbench uses a round robin arbiter as a context for introducing the
+concepts. The dut design file is -
+[sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
+
 ```sv
 module arguments_tb();
 
