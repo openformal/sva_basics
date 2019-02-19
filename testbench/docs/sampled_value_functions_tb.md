@@ -34,7 +34,7 @@ module sampled_value_functions_tb();
   end
 
 ```
-## Sampled value functions
+# Sampled value functions
 ## $rose(expression [,[clocking_event]])
 $rose returns true if the LSB of the expression changed to 1.
 Otherwise, it returns false.
