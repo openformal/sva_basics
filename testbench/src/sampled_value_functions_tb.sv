@@ -76,8 +76,8 @@ Otherwise, it returns false.
   );
 
 /*md
-## $chaged(expression)
-$stable returns true if the value of the expression changed.
+## $changed(expression)
+$changed returns true if the value of the expression changed.
 Otherwise, it returns false.
 This function was introduced in 2012 version of System Verilog.
 */
