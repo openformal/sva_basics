@@ -49,7 +49,7 @@ Otherwise, it returns false.
   );
 
 ```
-## $fell(expression)
+## $fell(expression [,[clocking_event]])
 $fell returns true if the LSB of the expression changed to 0.
 Otherwise, it returns false.
 ```sv
@@ -62,7 +62,7 @@ Otherwise, it returns false.
   );
 
 ```
-## $stable(expression)
+## $stable(expression [,[clocking_event]])
 $stable returns true if the value of the expression did not change.
 Otherwise, it returns false.
 ```sv
@@ -73,7 +73,7 @@ Otherwise, it returns false.
   );
 
 ```
-## $changed(expression)
+## $changed(expression [,[clocking_event]])
 $changed returns true if the value of the expression changed.
 Otherwise, it returns false.
 This function was introduced in 2012 version of System Verilog.
