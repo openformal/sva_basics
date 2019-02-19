@@ -1,7 +1,7 @@
 /*md
 # Description
 This testbench introduces sampled value functions.
-These are descried in **2012 System Verilog LRM in section 16.9.3 on page 360**.
+These are descried in **_2012 System Verilog LRM in section 16.9.3 on page 360_**.
 
 endpackage
 
