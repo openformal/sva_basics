@@ -2,8 +2,6 @@
 This testbench introduces sampled value functions.
 These are descried in **_2012 System Verilog LRM in section 16.9.3 on page 360_**.
 
-endpackage
-
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
 concepts. The dut design file is -
