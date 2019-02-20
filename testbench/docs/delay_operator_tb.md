@@ -1,5 +1,5 @@
 # Description
-This testbench explains the delay operator**(##)** usage in sequences
+This testbench explains delay operator**(##)** usage in sequences
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
@@ -43,7 +43,7 @@ module delay_operator_tb();
 Delay operator is used to specify number of clock cycles between sequences or
 parts of sequences.
 
-## Simple delay value (##[n])
+## Constant delay value (##[n])
 A ##[n] means there is delay of n cycles between the preceding sequence
 and the subsquent sequence.
 
@@ -79,4 +79,4 @@ endmodule
 ```
 **_NOTE :
 For specifying liveness propeties (eventually), refer to the testbench on
-liveness. 
+liveness.
