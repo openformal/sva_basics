@@ -102,6 +102,7 @@ In this case the fisrt part - (request[4] && grant[4])[=1] is true 2 cycle
 after the request[4] && grant[4] provided a new request[4] && grant[4] does not
 happen in that cycle. So this will allow the following sequence as a positive
 match of the precondition,
+
 |Signal     | Cycle 1 | Cycle 2 | Cycle 3 |
 |:---------:|:-------:|:-------:|:-------:|
 |reuest[4]  | 1       |0        |0        |
