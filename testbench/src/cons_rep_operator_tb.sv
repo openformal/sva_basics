@@ -164,7 +164,7 @@ It is captured as (!grant[4])[*0:31] ##1 grant[4]. The assertion will be,
     request[4] |-> (!grant[4])[*0:31] ##1 grant[4]
   );
 
-/*
+/*md
 The second approach approaches this as a gurantee that grant is provided
 within 32 cycles. An assertion for that will look like,
 */
