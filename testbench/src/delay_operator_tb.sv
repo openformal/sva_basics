@@ -47,7 +47,7 @@ Delay operator is used to specify number of clock cycles between sequences or
 parts of sequences.
 
 ## Simple delay value (##[n])
-A ##[n] means there is delay of n cycles in the preceding sequence
+A ##[n] means there is delay of n cycles between the preceding sequence
 and the subsquent sequence.
 
 Note: ##0 is legal
@@ -58,7 +58,7 @@ Note: ##0 is legal
 
 /*md
 ## Delay range (##[m:n])
-A ##[m:n] means there is delay of m to n cycles in the preceding sequence
+A ##[m:n] means there is delay of m to n cycles between the preceding sequence
 and the subsquent sequence.
 */
   req4_req5_gnt4_d3_6_gnt5: cover property (
@@ -67,7 +67,7 @@ and the subsquent sequence.
 
 /*md
 ## Finite but unspecified delay (##[m:$])
-A ##[m:$] means there is delay of m to unspecified cycles in the preceding
+A ##[m:$] means there is delay of m to unspecified cycles between the preceding
 sequence and the subsquent sequence.
 
 ##[*] is same as ##[0:$].
