@@ -1,5 +1,5 @@
 # Description
-This testbench explains consecutive repitition operator**(*)** usage in sequences
+This testbench explains consecutive repitition operator**(*)** usage.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
@@ -53,7 +53,7 @@ of the operand.
 [+] is an equivalent representation of [*1:$].
 
 ##
-## Consecutive repetition with constraint
+## Consecutive repetition with constant
 The example below shows the following case,
 request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
 ```sv
