@@ -47,8 +47,8 @@ Delay operator is used to specify number of clock cycles between sequences or
 parts of sequences.
 
 ## Simple delay value
-A ##[n] means there is delay of n cycles in the preceding event
-and the subsquent event.
+A ##[n] means there is delay of n cycles in the preceding sequence
+and the subsquent sequence.
 
 Note: ##0 is legal
 */
@@ -56,19 +56,19 @@ Note: ##0 is legal
      @(posedge clock) request[4] ##1 request[5] ##1 grant[4] ##3 grant[5]
   );
 
-/*
+/*md
 ## Delay range
-A ##[m:n] means there is delay of m to n cycles in the preceding event
-and the subsquent event.
+A ##[m:n] means there is delay of m to n cycles in the preceding sequence
+and the subsquent sequence.
 */
   req4_req5_gnt4_d3_6_gnt5: cover property (
      @(posedge clock) request[4] ##1 request[5] ##1 grant[4] ##[3:6] grant[5]
   );
 
-/*
+/*md
 ## Finite but unspecified delay
-A ##[m:$] means there is delay of m to unspecified cycles in the preceding event
-and the subsquent event.
+A ##[m:$] means there is delay of m to unspecified cycles in the preceding
+sequence and the subsquent sequence.
 
 ##[*] is same as ##[0:$]
 ##[+] is same as ##[1:$]
