@@ -62,7 +62,7 @@ Notice the definition of the operators are identical except on how the
 match is detected in the end.
 
 ##
-## Non consecutive and goto repetition with constant
+## Goto and non consecutive repetition with constant
 The sequence below describes a single request-grant operation on client 4
 followed by grant to client 5.
 
@@ -81,9 +81,7 @@ cycle afted 3rd grant[4].
   );
 
 ```
-
-/*md
-## Non consecutive / goto repetition with range
+## Gotot / non consecutive repetition with range
 The example below allows the following cases,
 ```sv
   client4_2_to_4_transactions_C: cover property (
@@ -95,16 +93,17 @@ The example below allows the following cases,
   );
 
 ```
-## Matching of non consecutive sequences
+## Matching of goto and non consecutive repetition sequences
 Consider the following property. This looks correct but it will fail.
 In this case the fisrt part - (request[4] && grant[4])[=1] is true 2 cycle
 after the request[4] && grant[4] provided a new request[4] && grant[4] does not
 happen in that cycle. So this will allow the following sequence as a positive
 match of the precondition,
-reuest[4]  : 1 0 0
-grant[4]   : 1 0 0
-request[5] : 1 1 1
-grant[5]   : 1 1 -
+Signal     | Cycle 1 | Cycle 2 | Cycle 3 |
+reuest[4]  | 1       |0        |0        |
+grant[4]   | 1       |0        |0        |
+request[5] | 1       |1        |1        |
+grant[5]   | 1       |1        |0        |
 In this case the if there is another requestor, say request[6], grant[5] wiil
 not be asserted in 3rd cycle. That will make the assertion fail.
 Use of goto operator "->" will fix this. The only difference between = and ->
