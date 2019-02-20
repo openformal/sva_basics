@@ -79,4 +79,4 @@ endmodule
 ```
 **_NOTE :
 For specifying liveness propeties (eventually), refer to the testbench on
-liveness. Do no assume ##[m:$] will result in a liveness property._**
+liveness. 
