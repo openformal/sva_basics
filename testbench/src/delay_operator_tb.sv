@@ -46,7 +46,7 @@ module delay_operator_tb();
 Delay operator is used to specify number of clock cycles between sequences or
 parts of sequences.
 
-## Simple delay value
+## Simple delay value (##[n])
 A ##[n] means there is delay of n cycles in the preceding sequence
 and the subsquent sequence.
 
@@ -57,7 +57,7 @@ Note: ##0 is legal
   );
 
 /*md
-## Delay range
+## Delay range (##[m:n])
 A ##[m:n] means there is delay of m to n cycles in the preceding sequence
 and the subsquent sequence.
 */
@@ -66,7 +66,7 @@ and the subsquent sequence.
   );
 
 /*md
-## Finite but unspecified delay
+## Finite but unspecified delay (##[m:$])
 A ##[m:$] means there is delay of m to unspecified cycles in the preceding
 sequence and the subsquent sequence.
 
@@ -84,14 +84,4 @@ endmodule
 **_NOTE :
 For specifying liveness propeties (eventually), refer to the testbench on
 liveness. Do no assume ##[m:$] will result in a liveness property._**
-*/
-
-/*md
-## Events
-Events may not be fully supported in all Formal Verification tools.
-
-# Recommendation
-Clocking methodology depends on the use case and ASIC flow.
-In general, explicit clocking in properties (or assertions/assumptions/
-covers where property is not present) is good for reuse and debug.
 */
