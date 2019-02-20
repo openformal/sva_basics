@@ -66,9 +66,9 @@ request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
 /*md
 ## Consecutive repetition with range
 The example below allows the following cases,
-request[4] && !grant[4] ##1 !grant[4] ##1 grant[4]
-request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
-request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
+-request[4] && !grant[4] ##1 !grant[4] ##1 grant[4]
+-request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
+-request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
 ```sv
   req4_req5_gnt4_d1_3_gnt5_C: cover property (
      @(posedge clock) request[4] ##0 (!grant[4])[*1:3] ##1 grant[4]
@@ -82,14 +82,11 @@ is asserted, corresponding grant will be asserted within 31 clock cycles.
 Assume the precondition, request[4] asserted, happens on cycle 1. The latest
 grant[4] can be asserted is cycle 32.
 
-```sv
-
-/*
 Assertion below will pass because all traces will satisfy the sequence.
 A trace with grant[4] deasserted till cycle 31 cycle is *not* a counterexample.
 Such a trace will satisfy the assertion as it will end at cycle 30 as it is
 the last iterative match.
-*/
+```sv
   req4_and_not_gnt4_for_upto_cycle30_AT: assert property (
      @(posedge clock) request[4] &&!grant[4] |-> ##1 (!grant[4])[*0:29]
   );
