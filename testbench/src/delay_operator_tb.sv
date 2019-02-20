@@ -1,0 +1,99 @@
+/*md
+# Description
+This testbench explains the delay operator**(##)** usage in sequences
+
+# DUT
+This testbench uses a round robin arbiter as a context for introducing the
+concepts. The dut design file is -
+[sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
+
+*/
+
+//sv+
+module delay_operator_tb();
+
+  logic clock;
+  logic reset;
+
+  parameter CLIENTS = 32;
+
+  logic [CLIENTS-1:0] request;
+  logic [CLIENTS-1:0] grant;
+
+  rr_arbiter #(.CLIENTS(32)) dut (
+                  .request (request),
+                  .grant   (grant),
+                  .stall   (stall),
+                  .clock   (clock),
+                  .reset   (reset));
+                  
+  logic cycle_after_reset;
+  always @(posedge clock) begin
+    if (reset)
+      cycle_after_reset <= 1'b1;
+    else
+      cycle_after_reset <= 1'b0;
+  end
+
+  req_stable_AS1: assume property (
+    @(posedge clock) disable iff (cycle_after_reset) (
+      &((~($past(request) & (~$past(grant)))) | request)
+    )
+  );
+
+/*md
+# Overview
+Delay operator is used to specify number of clock cycles between sequences or
+parts of sequences.
+md*/
+
+/*
+## Simple delay value
+A ##[n] means there is delay of n cycles in the preceding event
+and the subsquent event.
+
+Note: ##0 is legal
+*/
+  req4_req5_gnt4_d3_gnt5: cover property (
+     @(posedge clock) request[4] ##1 request[5] ##1 grant[4] ##3 grant[5]
+  );
+
+/*
+## Delay range
+A ##[m:n] means there is delay of m to n cycles in the preceding event
+and the subsquent event.
+*/
+  req4_req5_gnt4_d3_6_gnt5: cover property (
+     @(posedge clock) request[4] ##1 request[5] ##1 grant[4] ##[3:6] grant[5]
+  );
+
+/*
+## Finite but unspecified delay
+A ##[m:$] means there is delay of m to unspecified cycles in the preceding event
+and the subsquent event.
+
+##[*] is same as ##[0:$]
+##[+] is same as ##[1:$]
+
+*/
+  req4_req5_gnt4_d3_many_gnt5: cover property (
+     @(posedge clock) request[4] ##1 request[5] ##1 grant[4] ##[3:$] grant[5]
+  );
+endmodule
+//sv-
+
+/*md
+**_NOTE :
+For specifying liveness propeties (eventually), refer to the testbench on
+liveness. Do no assume ##[m:$] will result in a liveness property._**
+*/
+
+/*md
+## Events
+Events may not be fully supported in all Formal Verification tools.
+
+# Recommendation
+Clocking methodology depends on the use case and ASIC flow.
+In general, explicit clocking in properties (or assertions/assumptions/
+covers where property is not present) is good for reuse and debug.
+*/

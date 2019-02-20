@@ -100,7 +100,7 @@ not get deasserted till grant is received.
 Note: This is a succint but convoluted expression. A generate on assumtion on
 individual bits is easier to understand.
 ```sv
-  req_stable_on_stall_AS1: assume property (
+  req_stable_when_no_gnt_AS1: assume property (
     @(posedge clock) disable iff (cycle_after_reset) (
       &((~($past(request) & (~$past(grant)))) | request)
     )
