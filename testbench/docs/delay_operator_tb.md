@@ -67,8 +67,9 @@ and the subsquent sequence.
 A ##[m:$] means there is delay of m to unspecified cycles in the preceding
 sequence and the subsquent sequence.
 
-##[*] is same as ##[0:$]
-##[+] is same as ##[1:$]
+##[*] is same as ##[0:$].
+
+##[+] is same as ##[1:$].
 
 ```sv
   req4_req5_gnt4_d3_many_gnt5: cover property (
