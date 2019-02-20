@@ -26,7 +26,7 @@ module delay_operator_tb();
                   .stall   (stall),
                   .clock   (clock),
                   .reset   (reset));
-                  
+
   logic cycle_after_reset;
   always @(posedge clock) begin
     if (reset)
@@ -45,9 +45,7 @@ module delay_operator_tb();
 # Overview
 Delay operator is used to specify number of clock cycles between sequences or
 parts of sequences.
-md*/
 
-/*
 ## Simple delay value
 A ##[n] means there is delay of n cycles in the preceding event
 and the subsquent event.
