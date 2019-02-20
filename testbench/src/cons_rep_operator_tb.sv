@@ -69,9 +69,9 @@ request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
 /*md
 ## Consecutive repetition with range
 The example below allows the following cases,
--request[4] && !grant[4] ##1 !grant[4] ##1 grant[4]
--request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
--request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
+* request[4] && !grant[4] ##1 !grant[4] ##1 grant[4]
+* request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
+* request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
 */
   req4_req5_gnt4_d1_3_gnt5_C: cover property (
      @(posedge clock) request[4] ##0 (!grant[4])[*1:3] ##1 grant[4]
@@ -154,13 +154,11 @@ A better approach is to think in terms of guarantees and rules. The example
 below shows the subtle difference between the two approaches.
 
 For the examples above, the first approach requires legal sequence space.
-request[4] and grant[4] in the same cycle
-request[4] and grant[4] in 1 cycle
-...
-request[4] and grant[4] in 32 cycles
-It is captured as
-(!grant[4])[*0:31] ##1 grant[4]
-The assertion will be,
+* request[4] and grant[4] in the same cycle
+* request[4] and grant[4] in 1 cycle
+* ...
+* request[4] and grant[4] in 32 cycles
+It is captured as (!grant[4])[*0:31] ##1 grant[4]. The assertion will be,
 */
   gnt4_within_32_AT1: assert property (
     request[4] |-> (!grant[4])[*0:31] ##1 grant[4]
