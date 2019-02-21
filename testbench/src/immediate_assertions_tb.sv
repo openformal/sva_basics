@@ -10,7 +10,7 @@ concepts. The dut design file is -
 */
 
 //sv+
-module immediate_tb();
+module immediate_assertions_tb();
 
   logic clock;
   logic reset;

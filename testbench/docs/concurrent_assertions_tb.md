@@ -1,5 +1,5 @@
 # Description
-This testbench explains concurrancy in concurrent sequences.
+This testbench explains concurrent assertions.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
@@ -7,7 +7,7 @@ concepts. The dut design file is -
 [sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
 
 ```sv
-module concurrency_tb();
+module concurrent_assertions_tb();
 
   logic clock;
   logic reset;

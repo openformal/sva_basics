@@ -127,3 +127,7 @@ Clocking methodology depends on the use case and ASIC flow.
 In general, explicit clocking in properties (or assertions/assumptions/
 covers where property is not present) is good for reuse and debug.
 */
+
+/*md
+**Next module** : [Module binding](https://github.com/openformal/sva_basics/blob/master/testbench/docs/bind_tb.md)
+*/

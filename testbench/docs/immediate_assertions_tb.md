@@ -7,7 +7,7 @@ concepts. The dut design file is -
 [sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
 
 ```sv
-module immediate_tb();
+module immediate_assertions_tb();
 
   logic clock;
   logic reset;
