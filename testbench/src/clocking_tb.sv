@@ -71,7 +71,7 @@ to be reusable;
 
 //md ## Clocking in sequence
   sequence gnt4_in_31_cycles_S3;
-    @(posedge) clock ##[0:31] grant[4];
+    @(posedge clock) ##[0:31] grant[4];
   endsequence;
 
   property gnt4_in_31_cycles_P3;
