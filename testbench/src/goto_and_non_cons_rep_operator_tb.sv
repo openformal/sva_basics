@@ -69,7 +69,7 @@ match is detected in the end.
 The sequence below describes a single request-grant operation on client 4
 followed by grant to client 5.
 
-A cover for the first one can have a delay of between 3rd grant[4] and
+A cover for the first one can have a delay between 3rd grant[4] and
 grant[5] when using = operator. There will be no grant[4] during this delay.
 In case of -> operator the grant[5] will need to be asserted the clock
 cycle afted 3rd grant[4].
@@ -98,7 +98,7 @@ The example below allows the following cases,
 /*md
 ## Matching of goto and non consecutive repetition sequences
 Consider the following property. This looks correct but it will fail.
-In this case the fisrt part - (request[4] && grant[4])[=1] is true 2 cycle
+In this case the first part - (request[4] && grant[4])[=1] is true 2 cycle
 after the request[4] && grant[4] provided a new request[4] && grant[4] does not
 happen in that cycle. So this will allow the following sequence as a positive
 match of the precondition,
@@ -110,7 +110,7 @@ match of the precondition,
 |request[5] | 1       |1        |1        |
 |grant[5]   | 1       |1        |0        |
 
-In this case the if there is another requestor, say request[6], grant[5] wiil
+In this case the if there is another requestor, say request[6], grant[5] will
 not be asserted in 3rd cycle. That will make the assertion fail.
 Use of goto operator "->" will fix this. The only difference between = and ->
 is that -> will be true only the very cycle the match happens, which is cycle

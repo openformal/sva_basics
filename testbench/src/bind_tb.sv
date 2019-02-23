@@ -12,7 +12,12 @@ In many instances it is desirable to write assertions and assumprions in a
 separate file. One way is to create a module that houses all these and then
 bind this module to the design file.
 
-# Binding module
+When a module is bound to another module (parent module) the module being
+bound gets instantiated in the parent module. This module's ports can be
+connected to any signal of the parent module, just like if it were instantiated
+in the parent module in a regular fashion.
+
+# Binding module with SVA's
 A binding module is a regular module that has signals required for properties
 as inputs.
 
@@ -77,7 +82,7 @@ quite useful. Having said that, one of the reasons of binding a module often
 quoted is that this allows the verification engineers to independently add
 assertions in the design files.
 
-It can be argued that properties for the behaviour that can be obsersed from
+It can be argued that properties for the behaviour that can be observed from
 outside of a module can be placed in the interface or a bind module that is
 instantiated along with the design through module bindings. This way the binding
 module is at the same level of hierarchy as the module being checked.

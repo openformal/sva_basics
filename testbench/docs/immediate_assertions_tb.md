@@ -56,14 +56,13 @@ formal verification immediate assertions can be used as well.
     end
   end
 
-
-  property gnt4_in_31_cycles_P1(req, gnt);
-    req |-> ##[0:31] gnt;
+  property gnt4_in_31_cycles_P1;
+    request[4] |-> ##[0:31] grant[4];
   endproperty;
 
   gnt4_in_31_cycles_AT1: assert property (
-    @(posedge clock) (gnt4_in_31_cycles_P1(request[4], grant[4]))
+    @(posedge clock) (gnt4_in_31_cycles_P1)
   );
-
+  
 endmodule
 ```

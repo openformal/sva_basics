@@ -116,9 +116,9 @@ A failure of a cover property indicates that there is no
 trace that satisfies the sequence that property is trying to
 cover.
 Also note that this is closely related to the assertion (gnt4_in_31_cycles_AT)
-we coded. If assert(prop) holds true, then cover(not prop) will hold false.
-In this case, since we have proven an aseertion stating a grant
-comes in 0 to 31 cycle, a cover of grant coming in 32 cycles will
+coded earlier in this testbench. If assert(prop) holds true, then cover
+(not prop) will hold false. In this case, since we have proven an aseertion
+stating a grant comes in 0 to 31 cycle, a cover of grant coming in 32 cycles
 will be false.
 */
 

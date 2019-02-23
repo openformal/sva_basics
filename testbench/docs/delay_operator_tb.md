@@ -78,5 +78,5 @@ sequence and the subsquent sequence.
 endmodule
 ```
 **_NOTE :
-For specifying liveness propeties (eventually), refer to the testbench on
+For specifying liveness properties (eventually), refer to the testbench on
 liveness.

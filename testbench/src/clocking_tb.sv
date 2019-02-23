@@ -71,15 +71,14 @@ to be reusable;
 
 //md ## Clocking in sequence
   sequence gnt4_in_31_cycles_S3;
-    ##[0:31] grant[4];
+    @(posedge) clock ##[0:31] grant[4];
   endsequence;
 
   property gnt4_in_31_cycles_P3;
-    @(posedge clock) request[4] |-> gnt4_in_31_cycles_S3;
+    request[4] |-> gnt4_in_31_cycles_S3;
   endproperty;
 
   gnt4_in_31_cycles_AT3: assert property (gnt4_in_31_cycles_P3);
-
 
 /*md
 ## Clocking blocks
@@ -100,7 +99,12 @@ to be reusable;
   gnt4_in_31_cycles_AT4: assert property (
     @(pe_clock) (gnt4_in_31_cycles_P4)
   );
-//md ### Default clocking block
+
+/*
+### Default clocking block
+When a default clocking block is specified and no clocking is specified
+in an assertion, the default clocking block is used by the assertion.
+*/
   default clocking
     @(posedge clock);
   endclocking

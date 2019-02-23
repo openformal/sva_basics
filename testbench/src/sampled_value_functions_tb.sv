@@ -1,7 +1,7 @@
 /*md
 # Description
 This testbench introduces sampled value functions.
-These are descried in **_2012 System Verilog LRM in section 16.9.3 on page 360_**.
+These are described in **_2012 System Verilog LRM in section 16.9.3 on page 360_**.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
@@ -100,7 +100,7 @@ If expression2 is not specified, then it defaults to 1'b1.
 
 In the assumption below we use $past to express that request for any bit does
 not get deasserted till grant is received.
-Note: This is a succint but convoluted expression. A generate on assumtion on
+Note: This is a succint but convoluted expression. A generate on assumption on
 individual bits is easier to understand.
 */
   req_stable_when_no_gnt_AS1: assume property (

@@ -62,8 +62,6 @@ request[4] && !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 !grant[4] ##1 grant[4]
   );
 
 ```
-
-/*md
 ## Consecutive repetition with range
 The example below allows the following cases,
 * request[4] && !grant[4] ##1 !grant[4] ##1 grant[4]
@@ -162,7 +160,7 @@ It is captured as (!grant[4])[*0:31] ##1 grant[4]. The assertion will be,
   );
 
 ```
-The second approach approaches this as a gurantee that grant is provided
+The second approach approaches this as a guarantee that grant is provided
 within 32 cycles. An assertion for that will look like,
 ```sv
   gnt4_within_32_AT2: assert property (
