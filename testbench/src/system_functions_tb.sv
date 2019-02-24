@@ -53,7 +53,7 @@ expression.
      @(posedge clock) (|request) && !stall |-> $onehot(grant)
   );
 
-/*
+/*md
 ## $onehot0
 $onehot0(expression) is true only when single bit is set or no bits are set in
 the expression.
@@ -64,7 +64,7 @@ the expression.
 
 /*md
 ## $countones
-$countones(expression) returns nuber of bits set in the expression.
+$countones(expression) returns number of bits set in the expression.
 */
   grant_none_or_one_AT: assert property (
      @(posedge clock) $countones(grant) <= 1
