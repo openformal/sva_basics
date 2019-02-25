@@ -1,17 +1,18 @@
 # Description
-This testbench explains system functions.
+This testbench explains local variable.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
 concepts. The dut design file is -
 [sva_basics/design/src/rr_arbiter.sv](https://github.com/openformal/sva_basics/blob/master/design/docs/rr_arbiter.md)
 ```sv
-module system_functions_tb();
+module local_variables_tb();
 
   logic clock;
   logic reset;
 
   parameter CLIENTS = 32;
+  parameter CLIENTS_W = $clog2(CLIENTS);
 
   logic [CLIENTS-1:0] request;
   logic [CLIENTS-1:0] grant;
@@ -39,32 +40,24 @@ module system_functions_tb();
 
 ```
 # Overview
-System functions facilitate describing certain frequently seen behaviour in
-designs succinctly.
-
-## $onehot
-$onehot(expression) is true only when one and only one bit is set in the
-expression.
+Local variables are defined within a sequence. These are very helpful in writing
+certain kinds of sequences. Their scope is restricted to the sequence they are
+defined in.
+Note that local variables are per thread variable. Each instance of the parent
+sequence will have its own copy of local variable.
+Local variables can be only used in expressions of the sequence and not in
+delay or repetion operators.
 ```sv
-  req_and_no_stall_implies_grant_AT: assert property (
-     @(posedge clock) (|request) && !stall |-> $onehot(grant)
+
+  property last_selected_static_on_stall_P;
+    logic [CLIENTS_W-1:0] last_selected;
+     ($rose(stall), last_selected = dut.last_selected)##1(stall)[*50] |->
+     dut.last_selected  == last_selected;
+  endproperty
+
+  last_selected_static_on_stall_AT: assert property (
+     @(posedge clock) (last_selected_static_on_stall_P)
   );
 
-```
-## $onehot0
-$onehot0(expression) is true only when single bit is set or no bits are set in
-the expression.
-```sv
-  grant_onehot0_AT: assert property (
-     @(posedge clock) $onehot0(grant)
-  );
-
-```
-## $countones
-$countones(expression) returns number of bits set in the expression.
-```sv
-  grant_none_or_one_AT: assert property (
-     @(posedge clock) $countones(grant) <= 1
-  );
 endmodule
 ```

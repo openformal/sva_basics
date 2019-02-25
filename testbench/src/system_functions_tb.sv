@@ -1,6 +1,6 @@
 /*md
 # Description
-This testbench explains the system functions.
+This testbench explains system functions.
 
 # DUT
 This testbench uses a round robin arbiter as a context for introducing the
