@@ -114,7 +114,7 @@ have to be 21 clock cycles long as one of the sequences, grant_1_5_S is
   );
 
 /*md
-## first_match
+## first_match operator
 usage: first_match(sequence)
 firstmatch operator defines the first match of the sequence.
 
@@ -127,7 +127,7 @@ for cases where certain behavior only occurs once, say out of reset.
   );
 
 /*md
-## throughout
+## throughout operator
 usage: signal throughout sequence
 This sequence matches if the expression is trues throughout the match
 of the sequence. The start and end of the match is same as that of the
