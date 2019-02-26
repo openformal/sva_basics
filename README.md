@@ -22,6 +22,7 @@ Some of the testbenches here use features of 2012 SystemVerilog. Tool support ma
 * [Goto and non consecutive repetition operator](https://github.com/openformal/sva_basics/blob/master/testbench/docs/goto_and_non_cons_rep_operator_tb.md)
 * ["if" and "else" keywords](https://github.com/openformal/sva_basics/blob/master/testbench/docs/if_and_else_tb.md)
 * [Local variables](https://github.com/openformal/sva_basics/blob/master/testbench/docs/local_variables_tb.md)
+* [Sequence operators](https://github.com/openformal/sva_basics/blob/master/testbench/docs/sequence_operators_tb.md)
 
 # General advise to the users
 It is usually advisable to use constructs that match the use case. If multiple constructs can be used, the easiest to
