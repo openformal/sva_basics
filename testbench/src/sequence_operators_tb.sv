@@ -127,8 +127,6 @@ sequence 1 that starts on the clock cycle.
 
 /*md
 ## first_match operator
-/*md
-## first_match operator
 usage: first_match("sequence 1")
 firstmatch operator defines the first match of the sequence 1.
 
