@@ -114,9 +114,23 @@ have to be 21 clock cycles long as one of the sequences, grant_1_5_S is
   );
 
 /*md
+## not operator
+usage: not "sequence 1"
+The above sequence is true on a clock cycle when there is no match of the
+sequence 1 that starts on the clock cycle.
+*/
+
+  grant_2_skipped_AT: assert property (
+    @(posedge clock) not ((!stall && !grant[2] && request[2]) throughout
+      (grant[1] ##4 grant[5]))
+  );
+
+/*md
 ## first_match operator
-usage: first_match(sequence)
-firstmatch operator defines the first match of the sequence.
+/*md
+## first_match operator
+usage: first_match("sequence 1")
+firstmatch operator defines the first match of the sequence 1.
 
 The example below is just to show the syntax. This construct can be used
 for cases where certain behavior only occurs once, say out of reset.
@@ -128,10 +142,10 @@ for cases where certain behavior only occurs once, say out of reset.
 
 /*md
 ## throughout operator
-usage: signal throughout sequence
+usage: signal throughout "sequence 1"
 This sequence matches if the expression is trues throughout the match
-of the sequence. The start and end of the match is same as that of the
-sequence.
+of sequence 1. The start and end of the match is same as that of the
+sequence 1.
 */
 
   grant_1_4_5_no_stall_C: cover property (
