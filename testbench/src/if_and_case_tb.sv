@@ -48,7 +48,7 @@ if and case keywords are used.
 
 ## if
 The property below shows the use of if keyword.
-*_(Note: This property does not capture the full requirements on stall.)
+*_(Note: This property does not capture the full requirements on stall.)_*
 */
   req_stall_grant_AT: assert property (
      @(posedge clock) (|request) |->
@@ -73,12 +73,4 @@ The property below shows how to use a case statement.
      endcase
   );
 
-/*md
-## $countones
-$countones(expression) returns number of bits set in the expression.
-*/
-  grant_none_or_one_AT: assert property (
-     @(posedge clock) $countones(grant) <= 1
-  );
-endmodule
 //sv-
