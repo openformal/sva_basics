@@ -38,14 +38,21 @@ for a request within 31 (=CLIENTS-1) cycles.
 Let us concentrate on one requestor for this testbench, requestor 4.
 
 ## Sequence
-A sequence is a series of boolean conditions or sequences. A sequence
-can spans one to multiple clocks.
+A sequence is a series of boolean conditions. A sequence can spans one to many
+consecutive clocks.
+
 This sequence describes an grant[4] being set in 0 to 31 clocks.
 */
 
- sequence gnt4_in_31_cycles_S;
-   ##[0:31] grant[4];
- endsequence;
+  sequence gnt4_in_31_cycles_S;
+    ##[0:31] grant[4];
+  endsequence;
+
+/*md
+A sequence match happens when the conditions defined in the sequence are met.
+The start of the match is the clock where the conditions of the first cycle
+match and end of the match is the last cycle.
+*md/
 
 /*md
 ## Property

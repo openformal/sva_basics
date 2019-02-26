@@ -48,7 +48,7 @@ if and case keywords are used.
 
 ## if
 The property below shows the use of if keyword.
-*_(Note: This property does not capture the full requirements on stall.)_*
+*_(Note: This property does not capture complete requirements of stall.)_*
 */
   req_stall_grant_AT: assert property (
      @(posedge clock) (|request) |->
