@@ -14,7 +14,7 @@ Some of the testbenches here use features of 2012 SystemVerilog. Tool support ma
 * [Immediate assertions](https://github.com/openformal/sva_basics/blob/master/testbench/docs/immediate_assertions_tb.md)
 * [Clocking](https://github.com/openformal/sva_basics/blob/master/testbench/docs/clocking_tb.md)
 * [Module binding](https://github.com/openformal/sva_basics/blob/master/testbench/docs/bind_tb.md)
-* [Formal Arguments](https://github.com/openformal/sva_basics/blob/master/testbench/docs/arguments_tb.md)
+* [Formal arguments](https://github.com/openformal/sva_basics/blob/master/testbench/docs/arguments_tb.md)
 * ["disable" keyword](https://github.com/openformal/sva_basics/blob/master/testbench/docs/disable_tb.md)
 * [Sampled value functions](https://github.com/openformal/sva_basics/blob/master/testbench/docs/sampled_value_functions_tb.md)
 * [Delay operator](https://github.com/openformal/sva_basics/blob/master/testbench/docs/delay_operator_tb.md)
@@ -32,6 +32,6 @@ If the requirements involve a lot of correlated checking across interfaces and s
 synthesizable testbench that is self explanatory and write simpler assertions using the state and the outputs of
 the state machine. In such scenarios, numerous interrealed but separate SVAs become hard to understand and debug.
 
-# A caution against very complex sequences
+# A caution against composing very complex sequences
 There need to be some caution excercised when crafting very complicated sequences. It is advisable to make shorter sequences
 and then use them to assemble larger sequences. Excessively complex sequences can be very hard do debug and often create overconstraints. Often their creator is the only one who can understands what they represent, and only on the day they get created. So maintanence is a problem with such sequences. These are akin to the regex contortions of the scripting world.
