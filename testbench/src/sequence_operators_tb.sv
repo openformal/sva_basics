@@ -47,6 +47,7 @@ sequences using existing sequences.
 
 ## within operator
 usage: "sequence 1" within "sequence 2"
+
 The above sequence has a match when sequence 2 has a match and there exists
 at least one match of sequence 1 between the start of the match clock tick
 and end of the match clock tick for sequence 2. The start end of the match
@@ -68,6 +69,7 @@ are same as seuence 2.
 /*md
 ## and operator
 usage: "sequence 1" and "sequence 2"
+
 The above sequence has a match when both sequence 1 and 2 have a match and these
 matches start on the same clock cycle. The start of the match is this clock
 cycle and the end of the match is the later of the end of the match of
@@ -85,6 +87,7 @@ sequence 1 and 2.
 /*md
 ## or operator
 usage: "sequence 1" or "sequence 2"
+
 The above sequence has a match when either sequence 1 or 2 have a match.
 The start and end of the match is same as the matching sequence. If both
 sequences match the end of the match is the earlier of the end of the matches.
@@ -97,6 +100,7 @@ sequences match the end of the match is the earlier of the end of the matches.
   /*
 ## intersect operator
 usage: "sequence 1" intersect "sequence 2"
+
 The above sequence has a match when both sequence 1 or 2 have a match and the
 start and end of the matches for both sequences are identical.
 
@@ -116,6 +120,7 @@ have to be 21 clock cycles long as one of the sequences, grant_1_5_S is
 /*md
 ## not operator
 usage: not "sequence 1"
+
 The above sequence is true on a clock cycle when there is no match of the
 sequence 1 that starts on the clock cycle.
 */
@@ -128,6 +133,7 @@ sequence 1 that starts on the clock cycle.
 /*md
 ## first_match operator
 usage: first_match("sequence 1")
+
 firstmatch operator defines the first match of the sequence 1.
 
 The example below is just to show the syntax. This construct can be used
