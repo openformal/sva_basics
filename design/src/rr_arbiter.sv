@@ -1,4 +1,4 @@
-/*s_md
+/*md
 # Description
 This module is a parameterized round robin arbiter.
 # Specifications
@@ -20,9 +20,9 @@ This bus has a bit for each client. The bit indicates a grant
 for the corresponding client. A grant can come the same cycle
 as the request is presented.
 
-e_md*/
+*/
 
-//s_sv
+//sv+
 module rr_arbiter #(
   parameter CLIENTS = 8
   )
@@ -70,4 +70,4 @@ module rr_arbiter #(
   end
 
 endmodule
-//e_sv
+//sv-
