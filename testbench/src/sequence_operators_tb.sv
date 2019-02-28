@@ -155,5 +155,24 @@ sequence 1.
   grant_1_4_5_no_stall_C: cover property (
      @(posedge clock) !stall throughout grant_1_4_5_S
   );
+/*md
+## .trigerred
+"sequence 1".trigerred
+
+This holds to the cycle sequence 1 match ends.
+*/
+
+  sequence request_6_fell_S;
+    !request[6] ##1 request[6][*3] ##1 !request[6];
+  endsequence
+
+  request_6_fell_implies_grant_6_AT: assert property (
+    @(posedge clock) request_6_fell_S.triggered |-> $past(grant[6], 1)
+  );
+
+  request_6_fell_C: cover property (
+    @(posedge clock) request_6_fell_S.triggered
+  );
+
 endmodule
 //sv-
