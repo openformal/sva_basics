@@ -153,8 +153,8 @@ sequence 1.
      @(posedge clock) !stall throughout grant_1_4_5_S
   );
 ```
-## .trigerred
-"sequence 1".trigerred
+## .triggered
+"sequence 1".triggered
 
 This holds to the cycle sequence 1 match ends.
 ```sv
