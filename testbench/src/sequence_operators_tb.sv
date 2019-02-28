@@ -119,10 +119,10 @@ have to be 21 clock cycles long as one of the sequences, grant_1_5_S is
 
 /*md
 ## not operator
-usage: not "sequence 1"
+usage: not "property 1"
 
-The above sequence is true on a clock cycle when there is no match of the
-sequence 1 that starts on the clock cycle.
+not is a property operator (and it can not be used in the sequences but
+it can be used on the sequences).
 */
 
   grant_2_skipped_AT: assert property (
