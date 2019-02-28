@@ -16,13 +16,15 @@ Some of the testbenches here use features of 2012 SystemVerilog. Tool support ma
 * [Module binding](https://github.com/openformal/sva_basics/blob/master/testbench/docs/bind_tb.md)
 * [Formal arguments](https://github.com/openformal/sva_basics/blob/master/testbench/docs/arguments_tb.md)
 * ["disable" keyword](https://github.com/openformal/sva_basics/blob/master/testbench/docs/disable_tb.md)
+* [System functions](https://github.com/openformal/sva_basics/blob/master/testbench/docs/system_functions_tb.md)
 * [Sampled value functions](https://github.com/openformal/sva_basics/blob/master/testbench/docs/sampled_value_functions_tb.md)
 * [Delay operator](https://github.com/openformal/sva_basics/blob/master/testbench/docs/delay_operator_tb.md)
 * [Consecutive repetition operator](https://github.com/openformal/sva_basics/blob/master/testbench/docs/cons_rep_operator_tb.md)
 * [Goto and non consecutive repetition operator](https://github.com/openformal/sva_basics/blob/master/testbench/docs/goto_and_non_cons_rep_operator_tb.md)
-* ["if" and "else" keywords](https://github.com/openformal/sva_basics/blob/master/testbench/docs/if_and_else_tb.md)
+* ["if" and "case" keywords](https://github.com/openformal/sva_basics/blob/master/testbench/docs/if_and_else_tb.md)
 * [Local variables](https://github.com/openformal/sva_basics/blob/master/testbench/docs/local_variables_tb.md)
 * [Sequence operators](https://github.com/openformal/sva_basics/blob/master/testbench/docs/sequence_operators_tb.md)
+* [Property operators](https://github.com/openformal/sva_basics/blob/master/testbench/docs/property_operators_tb.md)
 
 # General advise to the users
 It is usually advisable to use constructs that match the use case. If multiple constructs can be used, the easiest to
