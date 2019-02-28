@@ -234,3 +234,20 @@ Removal of the assumption above will make the property below fail
 
 endmodule
 ```
+# Weak and strong operators
+The property operators s_nexttime, s_always, s_eventually, s_until,
+s_until_with, and sequence operator strong are strong: they require that some
+terminating condition happen in the future, and this includes the requirement
+that the property clock ticks enough time to enable the condition to happen.
+The property operators nexttime, always, until, eventually, until_with, and
+sequence operator weak are weak: they do not impose any requirement on the
+terminating condition, and do not require the clock to tick.
+The concept of weak and strong operators is closely related to an important
+notion of safety properties. Safety properties have the characteristic that
+all their failures happen at a finite time. For example, the property always a
+is a safety property since it is violated only if after finitely many clock
+ticks there is a clock tick at which a is false, even if there are infinitely
+many clock ticks in the computation. To the contrary, a failure of the property
+s_eventually a on a computation with infinitely many clock ticks cannot be
+identified at a finite time; if it is violated, the value of a must be false
+at each of the infinitely many clock ticks.

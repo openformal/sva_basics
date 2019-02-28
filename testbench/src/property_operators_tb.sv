@@ -236,7 +236,7 @@ property_expr is the clock tick after the end point of the match.
 endmodule
 //sv-
 
-/*
+/*md
 # Weak and strong operators
 The property operators s_nexttime, s_always, s_eventually, s_until,
 s_until_with, and sequence operator strong are strong: they require that some
