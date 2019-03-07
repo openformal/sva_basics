@@ -65,7 +65,7 @@ unconstrained.
     @(posedge clock) request[4] |-> s_eventually grant[4]
   );
 
-/*
+```
 # Strong vs weak properties
 Strong properties only pass when antecedent is observed. In formal verification
 infine length traces are allowed as a violations trace. In simulation the
@@ -83,7 +83,7 @@ property operators that start with "s_" indicate a strong property.
 
 _Note_: In SystemVerilog 2005 specifications the fist property below was
 considered a strong property. The 2009/2012 version makes it a weak property.
-*/
+```sv
 
   grant_within_32_AT2: assert property (
     @(posedge clock) request[4] |-> ##[0:$] grant[4]

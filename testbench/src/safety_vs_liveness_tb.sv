@@ -68,7 +68,7 @@ unconstrained.
     @(posedge clock) request[4] |-> s_eventually grant[4]
   );
 
-/*
+/*md
 # Strong vs weak properties
 Strong properties only pass when antecedent is observed. In formal verification
 infine length traces are allowed as a violations trace. In simulation the
