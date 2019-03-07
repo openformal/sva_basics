@@ -25,6 +25,7 @@ Some of the testbenches here use features of 2012 SystemVerilog. Tool support ma
 * [Local variables](https://github.com/openformal/sva_basics/blob/master/testbench/docs/local_variables_tb.md)
 * [Sequence operators](https://github.com/openformal/sva_basics/blob/master/testbench/docs/sequence_operators_tb.md)
 * [Property operators](https://github.com/openformal/sva_basics/blob/master/testbench/docs/property_operators_tb.md)
+* [Safety vs Liveness](https://github.com/openformal/sva_basics/blob/master/testbench/docs/safety_vs_liveness_tb.md)
 
 # General advise to the users
 It is usually advisable to use constructs that match the use case. If multiple constructs can be used, the easiest to
