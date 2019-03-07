@@ -79,7 +79,7 @@ if end of simulation occurs before the antecedant is seen.
 
 Below is an example of a strong and week property. The weak property will pass
 because there is no finite length trace that violates it. The strong one will
-fail. **strong(properties)** and **weak(property)** functions can be used
+fail. **strong(property)** and **weak(property)** functions can be used
 on a property to make it strong or weak.
 
 property operators that start with "s_" indicate a strong property.
@@ -96,6 +96,9 @@ considered a strong property. The 2009/2012 version makes it a weak property.
     @(posedge clock) request[4] |-> strong(##[0:$] grant[4])
   );
 
+endmodule
+//sv-
+
 /*md
 # Recommendation
 It is better to write a safety property as it is less complex to prove. In the
@@ -108,7 +111,7 @@ and is very useful. Liveness properties are very useful in detecting deadlock
 conditions. When writing liveness properties care must be taken to make sure
 they are strong.
 
-# Infinite traces on waveforms
+# Infinite traces in waveforms
 Since the designs always have a finite states any infinite trace is cyclical
 in nature. Formal verification tools divide infinite length violations into
 the initial and cyclical parts. The cyclical part is usually colored differently
@@ -116,6 +119,3 @@ indicating that it repeats infinitely. The counterexamples of the liveness
 assertions above are a good examples of infinite length trace. In this case
 the cyclical part is single cycle long.
 */
-
-endmodule
-//sv-
