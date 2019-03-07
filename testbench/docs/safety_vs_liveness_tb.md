@@ -93,7 +93,7 @@ considered a strong property. The 2009/2012 version makes it a weak property.
     @(posedge clock) request[4] |-> strong(##[0:$] grant[4])
   );
 
-/*
+```
 # Recommendation
 It is better to write a safety property as it is less complex to prove. In the
 case above, writing a property that states a grant comes in 32 cycles when
@@ -112,7 +112,7 @@ the initial and cyclical parts. The cyclical part is usually colored differently
 indicating that it repeats infinitely. The counterexamples of the liveness
 assertions above are a good examples of infinite length trace. In this case
 the cyclical part is single cycle long.
-*/
+```sv
 
 endmodule
 ```
